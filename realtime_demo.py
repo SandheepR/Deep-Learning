@@ -14,7 +14,7 @@ import os, random
 
 class FaceCV(object):
     
-  
+    
     """
     Singleton class for face recongnition task
     """
@@ -82,7 +82,8 @@ class FaceCV(object):
             
    
    
-        face_cascade = cv2.CascadeClassifier(self.CASE_PATH)
+        # face_cascade = cv2.CascadeClassifier('cascades/' + self.CASE_PATH)
+        face_cascade = cv2.CascadeClassifier("cascades\haarcascade_frontalface_alt.xml")
 
         # 0 means the default video capture device in OS
         video_capture = cv2.VideoCapture(0)
@@ -121,7 +122,187 @@ class FaceCV(object):
                     label = "{}, {}".format(int(predicted_ages[i]),
                                             "F" if predicted_genders[i][0] > 0.5 else "M")
                     print(int(predicted_ages[i]),predicted_genders[i][0])
-                  
+                    if predicted_genders[i][0] < 0.5 and ((int(predicted_ages[i])>15) and (int(predicted_ages[i])<21)) :
+                        print("Hello male 15-20")
+                        filename=random.choice(os.listdir("15-20M/"))
+                        cap = cv2.VideoCapture("15-20M/"+filename)
+
+                        # Read until video is completed
+                        while(cap.isOpened()):
+                          # Capture frame-by-frame
+                          ret, frame1 = cap.read()
+                          if ret == True:
+                        
+                            # Display the resulting frame
+                            cv2.imshow('Frame',frame1)
+                            # Press Q on keyboard to  exit
+                            if cv2.waitKey(25) & 0xFF == ord('q'):
+                              break
+            
+                          else:
+                              break
+
+                             
+                    elif predicted_genders[i][0] < 0.5 and ((int(predicted_ages[i])>20) and (int(predicted_ages[i])<=25)) :
+                        print("Hello male 20-25")
+                        filename=random.choice(os.listdir("20-25M/"))
+                        cap = cv2.VideoCapture("20-25M/"+filename)
+
+                        # Read until video is completed
+                        while(cap.isOpened()):
+                          # Capture frame-by-frame
+                          ret, frame1 = cap.read()
+                          if ret == True:
+                        
+                            # Display the resulting frame
+                            cv2.imshow('Frame',frame1)
+                            # Press Q on keyboard to  exit
+                            if cv2.waitKey(25) & 0xFF == ord('q'):
+                              break
+            
+                          else:
+                              break 
+                    elif predicted_genders[i][0] < 0.5 and ((int(predicted_ages[i])>=25) and (int(predicted_ages[i])<=35)) :
+                        print("Hello male 25-35")
+                        filename=random.choice(os.listdir("25-35M/"))
+                        cap = cv2.VideoCapture("25-35M/"+filename)
+
+                        # Read until video is completed
+                        while(cap.isOpened()):
+                          # Capture frame-by-frame
+                          ret, frame1 = cap.read()
+                          if ret == True:
+                        
+                            # Display the resulting frame
+                            cv2.imshow('Frame',frame1)
+                            # Press Q on keyboard to  exit
+                            if cv2.waitKey(25) & 0xFF == ord('q'):
+                              break
+            
+                          else:
+                              break   
+                    elif predicted_genders[i][0] < 0.5 and ((int(predicted_ages[i])>=35) and (int(predicted_ages[i])<=45)) :
+                        print("Hello male 35-45")
+                        filename=random.choice(os.listdir("35-45M/"))
+                        cap = cv2.VideoCapture("35-45M/"+filename)
+
+                        # Read until video is completed
+                        while(cap.isOpened()):
+                          # Capture frame-by-frame
+                          ret, frame1 = cap.read()
+                          if ret == True:
+                        
+                            # Display the resulting frame
+                            cv2.imshow('Frame',frame1)
+                            # Press Q on keyboard to  exit
+                            if cv2.waitKey(25) & 0xFF == ord('q'):
+                              break
+            
+                          else:
+                              break  
+                    elif predicted_genders[i][0] < 0.5 and ((int(predicted_ages[i])>45) and (int(predicted_ages[i])<=60)) :
+                        print("Hello male 45")
+                        filename=random.choice(os.listdir("above 45M/"))
+                        cap = cv2.VideoCapture("above 45M/"+filename)
+
+                        # Read until video is completed
+                        while(cap.isOpened()):
+                          # Capture frame-by-frame
+                          ret, frame1 = cap.read()
+                          if ret == True:
+                        
+                            # Display the resulting frame
+                            cv2.imshow('Frame',frame1)
+                            # Press Q on keyboard to  exit
+                            if cv2.waitKey(25) & 0xFF == ord('q'):
+                              break
+            
+                          else:
+                              break                      
+                    elif predicted_genders[i][0] > 0.5 and ((int(predicted_ages[i])>15) and (int(predicted_ages[i])<20)) :
+                        print("Hello female 15-20")
+                        filename=random.choice(os.listdir("15-20F/"))
+                        cap = cv2.VideoCapture("15-20F/"+filename)
+
+                        # Read until video is completed
+                        while(cap.isOpened()):
+                          # Capture frame-by-frame
+                          ret, frame1 = cap.read()
+                          if ret == True:
+                        
+                            # Display the resulting frame
+                            cv2.imshow('Frame',frame1)
+                            # Press Q on keyboard to  exit
+                            if cv2.waitKey(25) & 0xFF == ord('q'):
+                              break
+            
+                          else:
+                              break 
+                    elif predicted_genders[i][0] > 0.5 and ((int(predicted_ages[i])>20) and (int(predicted_ages[i])<25)) :
+                        print("Hello female 20-25")
+                        filename=random.choice(os.listdir("20-25F/"))
+                        cap = cv2.VideoCapture("20-25F/"+filename)
+
+                        # Read until video is completed
+                        while(cap.isOpened()):
+                          # Capture frame-by-frame
+                          ret, frame1 = cap.read()
+                          if ret == True:
+                        
+                            # Display the resulting frame
+                            cv2.imshow('Frame',frame1)
+                            # Press Q on keyboard to  exit
+                            if cv2.waitKey(25) & 0xFF == ord('q'):
+                              break
+            
+                          else:
+                              break 
+                    elif predicted_genders[i][0] > 0.5 and ((int(predicted_ages[i])>25) and (int(predicted_ages[i])<35)) :
+                        print("Hello female 25-35")
+                        filename=random.choice(os.listdir("25-35F/"))
+                        cap = cv2.VideoCapture("25-35F/"+filename)
+
+                        # Read until video is completed
+                        while(cap.isOpened()):
+                          # Capture frame-by-frame
+                          ret, frame1 = cap.read()
+                          if ret == True:
+                        
+                            # Display the resulting frame
+                            cv2.imshow('Frame',frame1)
+                            # Press Q on keyboard to  exit
+                            if cv2.waitKey(25) & 0xFF == ord('q'):
+                              break
+            
+                          else:
+                              break 
+                    elif predicted_genders[i][0] > 0.5 and ((int(predicted_ages[i])>35) and (int(predicted_ages[i])<45)) :
+                        print("Hello female 35-45")
+                        filename=random.choice(os.listdir("35-45F/"))
+                        cap = cv2.VideoCapture("35-45F/"+filename)
+
+                        # Read until video is completed
+                        while(cap.isOpened()):
+                          # Capture frame-by-frame
+                          ret, frame1 = cap.read()
+                          if ret == True:
+                        
+                            # Display the resulting frame
+                            cv2.imshow('Frame',frame1)
+                            # Press Q on keyboard to  exit
+                            if cv2.waitKey(25) & 0xFF == ord('q'):
+                              break
+            
+                          else:
+                              break 
+                    
+                   
+                                        # When everything done, release the video capture object
+                        cap.release()
+                        
+                        # Closes all the frames
+                        cv2.destroyAllWindows()
+                        
             
                         
                         
@@ -163,6 +344,12 @@ if __name__ == "__main__":
     main()
     
     
+
+
+
+
+
+
 
 
 
